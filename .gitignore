@@ -13,9 +13,5 @@ env/
 *.local
 dist/
 build/
-data/
-!data/sub-**
-!data/demographics.csv
-!data/LICENSE
 results/**
 !results/*.*
