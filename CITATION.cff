@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the following work."
+authors:
+  - family-names: "Corsi"
+    given-names: "Leonardo"
+    affiliation: "Fondazione Don Gnocchi IRCCS"
+    email: "leonardo.corsi.app@gmail.com"
+title: "Demographics-robust spontaneous eye blinking slowing in patients with severe acquired brain injury"
+version: "2.0.0"
+date-released: ""
+doi: ""
+license: "MIT"
+repository-code: "https://github.com/leonardocorsi/blink-waveforms-sabi"
+preferred-citation:
+  type: article
+  title: "Demographics-robust spontaneous eye blinking slowing in patients with severe acquired brain injury"
+  authors:
+    - family-names: "Corsi"
+      given-names: "L."
+    - family-names: "Magliacano"
+      given-names: "A."
+    - family-names: "Liuzzi"
+      given-names: "P."
+    - family-names: "Oddo"
+      given-names: "C. M."
+    - family-names: "Mannini"
+      given-names: "A."
+    - family-names: "Estraneo"
+      given-names: "A."
+  journal: ""
+  year: 2025
+  volume: null
+  doi: ""

@@ -1,0 +1,240 @@
+<style type='text/css'>
+table.dataframe { border-collapse: collapse; }
+table.dataframe tr:nth-child(2) td {border-bottom: 3px solid black; }
+table.dataframe tr:nth-child(14) td {border-bottom: 3px solid black; }
+table.dataframe tr:nth-child(1) td {border-top: 3px solid black; }
+table.dataframe tr:nth-child(4) td {border-bottom: 1px solid black;}
+table.dataframe tr:nth-child(6) td {border-bottom: 1px solid black;}
+table.dataframe tr:nth-child(8) td {border-bottom: 1px solid black;}
+table.dataframe tr:nth-child(10) td {border-bottom: 1px solid black;}
+table.dataframe tr:nth-child(12) td {border-bottom: 1px solid black;}
+table.dataframe td:nth-child(2) {border-right: 1px solid black;}
+</style>
+<table class="dataframe dataframe">
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Median (IQR)</td>
+      <td>Normality Test</td>
+      <td>Median (IQR)</td>
+      <td>Normality Test</td>
+      <td>Median (IQR)</td>
+      <td>Normality Test</td>
+      <td>Kruskal-Wallis</td>
+      <td>Kruskal-Wallis</td>
+      <td>Kruskal-Wallis</td>
+      <td>Conover</td>
+      <td>Conover</td>
+      <td>Conover</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>HC</td>
+      <td>HC p</td>
+      <td>eMCS</td>
+      <td>eMCS p</td>
+      <td>pDoC</td>
+      <td>pDoC p</td>
+      <td>H (df=2)</td>
+      <td>p</td>
+      <td>η²</td>
+      <td>HC vs. eMCS</td>
+      <td>eMCS vs. pDoC</td>
+      <td>HC vs. pDoC</td>
+    </tr>
+    <tr>
+      <td>EBR (blink/min)</td>
+      <td>Resting</td>
+      <td>19.0 (13.3, 25.0)</td>
+      <td>0.3153</td>
+      <td>15.7 (12.8, 20.5)</td>
+      <td>0.4921</td>
+      <td>16.0 (13.2, 18.9)</td>
+      <td>0.9238</td>
+      <td>1.4035</td>
+      <td>0.496</td>
+      <td>0.036</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>EBR (blink/min)</td>
+      <td>Oddball</td>
+      <td>20.0 (13.8, 23.0)</td>
+      <td>0.4903</td>
+      <td>15.7 (9.5, 18.9)</td>
+      <td>0.1767</td>
+      <td>15.3 (11.6, 18.0)</td>
+      <td>0.2573</td>
+      <td>4.3507</td>
+      <td>0.114</td>
+      <td>0.1116</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>LIBIV</td>
+      <td>Resting</td>
+      <td>0.8 (0.7, 1.0)</td>
+      <td>0.5326</td>
+      <td>0.9 (0.7, 1.1)</td>
+      <td>0.5787</td>
+      <td>0.9 (0.8, 0.9)</td>
+      <td>0.0632</td>
+      <td>0.3408</td>
+      <td>0.843</td>
+      <td>0.0087</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>LIBIV</td>
+      <td>Oddball</td>
+      <td>0.8 (0.7, 0.9)</td>
+      <td>0.0523</td>
+      <td>0.8 (0.7, 1.1)◆</td>
+      <td>0.0455</td>
+      <td>0.9 (0.8, 1.0)</td>
+      <td>0.1553</td>
+      <td>3.0136</td>
+      <td>0.222</td>
+      <td>0.0773</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mean Amplitude (µV)</td>
+      <td>Resting</td>
+      <td>458.6 (289.7, 556.4)</td>
+      <td>0.7732</td>
+      <td>325.3 (174.2, 358.5)</td>
+      <td>0.1616</td>
+      <td>259.4 (216.3, 355.8)</td>
+      <td>0.0989</td>
+      <td>6.7064</td>
+      <td>0.035*</td>
+      <td>0.172</td>
+      <td>0.020* (0.061◆)</td>
+      <td>0.892 (0.892)</td>
+      <td>0.051◆ (0.101)</td>
+    </tr>
+    <tr>
+      <td>Mean Amplitude (µV)</td>
+      <td>Oddball</td>
+      <td>444.7 (226.4, 575.6)</td>
+      <td>0.6799</td>
+      <td>187.1 (156.1, 401.2)</td>
+      <td>0.3147</td>
+      <td>178.6 (155.3, 248.2)◆</td>
+      <td>0.0018</td>
+      <td>6.9162</td>
+      <td>0.031*</td>
+      <td>0.1773</td>
+      <td>0.053◆ (0.106)</td>
+      <td>0.520 (0.520)</td>
+      <td>0.016* (0.049*)</td>
+    </tr>
+    <tr>
+      <td>Mean Duration (ms)</td>
+      <td>Resting</td>
+      <td>527.6 (504.4, 544.8)◆</td>
+      <td>0.0002</td>
+      <td>571.5 (530.0, 605.0)</td>
+      <td>0.2635</td>
+      <td>568.6 (538.7, 599.7)</td>
+      <td>0.4491</td>
+      <td>6.4823</td>
+      <td>0.039*</td>
+      <td>0.1662</td>
+      <td>0.038* (0.093◆)</td>
+      <td>0.780 (0.780)</td>
+      <td>0.031* (0.093◆)</td>
+    </tr>
+    <tr>
+      <td>Mean Duration (ms)</td>
+      <td>Oddball</td>
+      <td>530.1 (513.4, 561.1)◆</td>
+      <td>0.0036</td>
+      <td>558.8 (533.3, 652.7)</td>
+      <td>0.3274</td>
+      <td>583.1 (540.8, 605.1)</td>
+      <td>0.6974</td>
+      <td>3.4577</td>
+      <td>0.177</td>
+      <td>0.0887</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mean Rise Time (ms)</td>
+      <td>Resting</td>
+      <td>248.6 (244.4, 254.6)◆</td>
+      <td>0.0</td>
+      <td>269.8 (258.3, 295.3)</td>
+      <td>0.0638</td>
+      <td>271.1 (258.7, 295.8)</td>
+      <td>0.1709</td>
+      <td>14.7203</td>
+      <td>0.001***</td>
+      <td>0.3774</td>
+      <td>0.000*** (0.001***)</td>
+      <td>0.823 (0.823)</td>
+      <td>0.001** (0.003**)</td>
+    </tr>
+    <tr>
+      <td>Mean Rise Time (ms)</td>
+      <td>Oddball</td>
+      <td>256.0 (244.9, 267.8)◆</td>
+      <td>0.0002</td>
+      <td>276.8 (258.4, 301.9)</td>
+      <td>0.3976</td>
+      <td>285.4 (251.7, 306.0)</td>
+      <td>0.4345</td>
+      <td>6.1738</td>
+      <td>0.046*</td>
+      <td>0.1583</td>
+      <td>0.025* (0.075◆)</td>
+      <td>0.850 (0.850)</td>
+      <td>0.068◆ (0.136)</td>
+    </tr>
+    <tr>
+      <td>Mean Fall Time (ms)</td>
+      <td>Resting</td>
+      <td>273.5 (260.0, 296.2)</td>
+      <td>0.0733</td>
+      <td>311.7 (263.8, 318.3)</td>
+      <td>0.5292</td>
+      <td>279.2 (267.8, 330.7)</td>
+      <td>0.2751</td>
+      <td>2.1016</td>
+      <td>0.350</td>
+      <td>0.0539</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mean Fall Time (ms)</td>
+      <td>Oddball</td>
+      <td>277.7 (264.8, 305.1)◆</td>
+      <td>0.0218</td>
+      <td>289.9 (267.2, 336.6)</td>
+      <td>0.2938</td>
+      <td>291.4 (263.4, 314.9)</td>
+      <td>0.8529</td>
+      <td>0.6286</td>
+      <td>0.730</td>
+      <td>0.0161</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

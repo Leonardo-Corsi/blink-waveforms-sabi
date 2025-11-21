@@ -1,0 +1,21 @@
+# OS/IDE
+.vscode/
+*.code-workspace
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+env/
+*.egg-info/
+
+# local-only stuff
+.env
+*.local
+dist/
+build/
+data/
+!data/sub-**
+!data/demographics.csv
+!data/LICENSE
+results/**
+!results/*.*

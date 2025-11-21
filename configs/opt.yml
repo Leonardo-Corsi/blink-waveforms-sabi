@@ -1,0 +1,31 @@
+palette:
+  HC:
+    Resting: "#0072B2"
+    Oddball: "#56B4E9"
+  eMCS:
+    Resting: "#009E73"
+    Oddball: "#CCE939"
+  pDoC:
+    Resting: "#D55E00"
+    Oddball: "#E69F00"
+
+filter_similarity: true
+
+eog_channel: "EOG VEOG"
+
+stimulation_regex: "Hz|standard|deviant|Standard|Deviant|Raro|Frequente|raro|frequente"
+
+n_jobs: 8
+
+blink_min_dur: 0.1
+
+find_eog_kwargs:
+  event_id: 998
+  l_freq: 1
+  h_freq: 10
+  filter_length: "10s"
+  ch_name: "<<EOG_CHANNEL>>"
+  tstart: 0
+  reject_by_annotation: false
+  thresh: "q0.975"
+  verbose: "ERROR"
