@@ -312,7 +312,7 @@ if __name__ == '__main__':
     group_stats_df = run_stat_tests_ncheck(dagg, 
                             condition_col='Condition', 
                             group_col='Group', 
-                            alpha=0.10, 
+                            alpha=0.05, 
                             p_adjust='holm',
                             group_comparisons=[('HC', 'eMCS'), 
                                                ('eMCS', 'pDoC'), 
