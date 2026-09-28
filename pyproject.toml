@@ -22,7 +22,8 @@ dependencies = [
   "python-dotenv==1.1.1",
   "ruptures==1.1.9",
   "statannotations==0.7.1",
-  "ipython==8.27.0"
+  "ipython==8.27.0",
+  "jonckheere-test==0.1.1"
 ]
 
 [build-system]
