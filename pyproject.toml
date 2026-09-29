@@ -1,7 +1,7 @@
 [project]
 name = "blink-waveforms-sabi"
 version = "2.0.0"
-description = "Demographics-adjusted evaluation of blink waveforms for sABI patients"
+description = "Stimulus-locked blink synchronization analysis across levels of consciousness after severe acquired brain injury"
 authors = [{ name = "Leonardo Corsi", email = "leonardo.corsi.app@gmail.com" }, { name = "Alfonso Magliacano", email = "amagliacano@dongnocchi.it" }]
 readme = "README.md"
 requires-python = ">=3.12.7"

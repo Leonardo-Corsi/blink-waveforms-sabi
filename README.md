@@ -1,50 +1,57 @@
-# Blink waveform analysis and feature extraction for severe Acquired Brain Injury
+# Strength and Timing Failure Modes in Auditory Stimulus-Locked Blink Synchronization Across Levels of Consciousness
 
-This repository contains the full analysis pipeline for the submission of:
+This branch contains the analysis pipeline for the manuscript:
 
-> **Demographics-robust spontaneous eye blinking slowing in patients with severe acquired brain injury**  
-> Alfonso Magliacano(1), Leonardo Corsi(1,2)°, Piergiuseppe Liuzzi(1), Calogero Maria Oddo(2), Andrea Mannini(1), Anna Estraneo(1), 2025.
+> **Strength and Timing Failure Modes in Auditory Stimulus-Locked Blink Synchronization Across Levels of Consciousness**
+>
+> Leonardo Corsi, Alfonso Magliacano, Piergiuseppe Liuzzi, Calogero Maria Oddo, Anna Estraneo, Andrea Mannini
 
-(1) IRCCS Fondazione Don Carlo Gnocchi ONLUS, Florence, Italy
+Paper-specific development is maintained in the [`blink-probability-modulation-sabi`](https://github.com/leonardocorsi/blink-waveforms-sabi/tree/blink-probability-modulation-sabi) branch of this repository. The [`main`](https://github.com/leonardocorsi/blink-waveforms-sabi) branch remains the reference analysis for the earlier blink-waveform study.
 
-(2) Scuola Superiore Sant’Anna, Pisa, Italy
-
- ° corresponding author (lcorsi@dongnocchi.it or leonardo.corsi.app@gmail.com)
-
-The code implements an automated extraction and characterization of blink-related EOG waveforms from recordings in edf format, followed by statistical comparison across clinical groups and task conditions and demographical correction.
-
+The analysis reuses the common EOG blink-extraction pipeline and adds stimulus-locked timing analyses designed to separate the strength of blink modulation from its temporal alignment to the auditory stimulation cycle.
 
 ## Overview
 
-**Pipeline stages**
+### Pipeline stages
 
-1. **Demographics** — Demographical information on patients and healthy subjects  
+1. **Participant metadata** - Loads demographics and clinical group information.
 
-   → `scripts/demographics_data.py`
-2. **EOG processing** — Processing of EOG, extraction of blinks 
+   -> `scripts/demographics_data.py`, `data/demographics.csv`
 
-   → `scripts/eog_analysis.py`, `src/eogtools/eog.py`, `src/eogtools/blink_extraction.py`, `src/utils/events.py`,  `src/utils/rawtools.py`
+2. **Blink and stimulus extraction** - Processes vertical EOG recordings, detects blinks, extracts blink waveforms and features, and recovers auditory stimulus onsets.
 
-3. **Feature computation** — Derives amplitude, duration, rise/fall times, inter-blink intervals, similarity metrics.  
+   -> `scripts/eog_analysis.py`, `src/eogtools/`, `src/utils/events.py`
 
-   → `scripts/eog_analysis.py`,`src/utils/features.py`
-4. **Statistical analysis** — Summary and statistical testing of blink timing and waveform features and demographical correction
+3. **Circular timing analysis** - Tests raw blink delays for a preferred position within the repeated stimulus cycle using subject-level Rayleigh statistics and group-level summaries.
 
-   → `scripts/demographics_data.py`
+   -> `scripts/model_MBP.py`
 
-Outputs include per-subject blink features, summary plots, and group-level statistics reported in the manuscript
+4. **Mean blink proportion analysis** - Computes peri-stimulus blink counts and mean blink proportion (MBP), with resting data retained as a negative-control condition where appropriate.
 
----------------------------------------------------------------------
-Repository structure
+   -> `scripts/model_MBP.py`
+
+5. **Model-based MBP analysis** - Fits the literature Huber model for comparison and a low-dimensional periodic ramp model based on Neuwirth (2001) to estimate subject-level modulation strength and temporal delay.
+
+   -> `scripts/model_MBP.py`
+
+6. **Group statistics and figures** - Evaluates model fit, summarizes fitted parameters across HC, eMCS, and pDoC groups, and exports manuscript tables and figures.
+
+   -> `scripts/model_MBP.py`, `results_MBP/`
+
+Generated outputs include cached subject-level MBP/count data, Rayleigh summaries, model parameters, fit-quality measures, group statistics, and manuscript figures.
+
+## Repository structure
 
 ```text
-blink-pdoc/
+blink-waveforms-sabi/
 ├── LICENSE
 ├── CITATION.cff
 ├── pyproject.toml
-├── .env
 ├── configs/
 │   └── opt.yml
+├── data/
+│   ├── demographics.csv
+│   └── sub-*/eog/sub-*_task-*.edf
 ├── src/
 │   ├── eogtools/
 │   │   ├── eog.py
@@ -57,68 +64,76 @@ blink-pdoc/
 ├── scripts/
 │   ├── demographics_data.py
 │   ├── eog_analysis.py
-│   └── feature_stats.py
-└── data/
-    └── sub-*/eog/sub-*_task-*.edf
+│   └── model_MBP.py
+├── results*/
+│   ├── eog/
+│   └── STIM/
+└── results_MBP/
+    ├── cache/
+    ├── figures/
+    └── tables/
 ```
----------------------------------------------------------------------
-Installation
 
-All dependencies are declared in pyproject.toml (Python >= 3.12). 
-Quick setup:
+Raw EDF files are expected under the BIDS-like `data/sub-*/eog/` layout when preprocessing is rerun, but they do not need to be versioned with the repository.
+
+## Installation
+
+Dependencies are declared in `pyproject.toml` and require Python >= 3.12.7.
+
 ```text
-git clone https://github.com/leonardocorsi/blink-pdoc.git
-cd blink-pdoc
+git clone --branch blink-probability-modulation-sabi --single-branch https://github.com/leonardocorsi/blink-waveforms-sabi.git
+cd blink-waveforms-sabi
 ```
 
-if using pip:
+Using `pip`:
+
 ```text
 python -m venv .venv
 source .venv/bin/activate
 pip install .
 ```
 
-or, if using conda:
+Using `conda`:
+
 ```text
-conda create -n blink-pdoc python=3.12.7
-conda activate blink-pdoc
+conda create -n blink-sabi python=3.12.7
+conda activate blink-sabi
 pip install .
 ```
 
----------------------------------------------------------------------
-Configuration
+## Configuration
 
-Environment variables are defined in .env:
+Local environment variables can be defined in an untracked `.env` file for preprocessing:
+
 ```text
 DATA_DIR=./data
 RESULTS_DIR=./results
 CONFIG_PATH=./configs/opt.yml
 PYTHONPATH=src
 ```
-The main YAML configuration configs/opt.yml controls instead:
-- processing parameters (EOG channel, thresholds, window length)
-- palette definitions for plotting
-- parallel job number
 
----------------------------------------------------------------------
-Running the analysis
+`configs/opt.yml` controls EOG processing parameters, the stimulation-event matching expression, plotting palettes, and parallel job count.
 
-1. Place EDF files in data/sub-*/eog/ using the BIDS-like naming convention:
-   sub-<id>_task-Resting_eog.edf
-   sub-<id>_task-Oddball_eog.edf
-2. Edit .env and configs/opt.yml as needed.
-3. Execute:
-   python scripts/demographics_data.py
-   python scripts/eog_analysis.py
-4. Results (CSVs, SVGs, HTML) will appear in the RESULTS_DIR folder.
+By default, `scripts/model_MBP.py` reads blink and stimulus files from `./results`. If preprocessing outputs are stored elsewhere, set the `MBP_INPUT_RESULTS_DIR` environment variable to that directory before running the MBP analysis.
 
+## Running the analysis
 
----------------------------------------------------------------------
-Citation
+From the repository root:
 
-If you use this code, please cite the accompanying publication and this repository (see CITATION.cff).
+```text
+python scripts/demographics_data.py
+python scripts/eog_analysis.py
+python scripts/model_MBP.py
+```
 
----------------------------------------------------------------------
-License
+The EOG preprocessing step writes blink and stimulus files under `RESULTS_DIR`. The paper-specific analysis writes its outputs to `results_MBP/`, organized into `cache/`, `figures/`, and `tables/`.
 
-Distributed under the MIT License — see LICENSE.
+The committed `results_MBP/` directory provides the analysis products associated with the current branch snapshot. Re-running the scripts may overwrite files with the same names.
+
+## Citation
+
+If you use the analysis in this branch, please cite the accompanying manuscript and this repository. Citation metadata are provided in `CITATION.cff`.
+
+## License
+
+Distributed under the MIT License - see `LICENSE`.

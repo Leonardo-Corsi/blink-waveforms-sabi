@@ -2310,12 +2310,33 @@ for ax, col in zip(axs.flatten(), cols2plot.flatten(), strict=True):
                     jitter = 0
             sc.set_offsets(np.c_[offsetsx, offsetsy])
 
-    # Stats
+    # Use the same Holm-corrected Conover-Iman p-values exported above.
     pairs = [('HC','eMCS'), ('HC','pDoC'), ('eMCS','pDoC')]
+    posthoc_data = neuwirt4boxplot[['Group', col]].dropna()
+    group_values = [
+        posthoc_data.loc[posthoc_data['Group'] == group, col]
+        for group in group_order
+    ]
+    _, omnibus_p = stats.kruskal(*group_values)
+
+    if omnibus_p < ALPHA:
+        conover_holm = skph.posthoc_conover(
+            posthoc_data,
+            val_col=col,
+            group_col='Group',
+            p_adjust='holm',
+        )
+        corrected_pvalues = [
+            conover_holm.loc[group1, group2]
+            for group1, group2 in pairs
+        ]
+    else:
+        corrected_pvalues = [1.0] * len(pairs)
+
     annot = Annotator(ax, pairs, data=neuwirt4boxplot, x='Group', y=col)
-    annot.configure(test='Mann-Whitney', text_format='star', loc='inside', 
+    annot.configure(text_format='star', loc='inside',
                     hide_non_significant=True, verbose=0)
-    annot.apply_and_annotate()
+    annot.set_pvalues_and_annotate(corrected_pvalues)
 
     # Marker-shape legend for diagnosis (all unique diags)
     all_diags = sorted(neuwirt4boxplot['Clinical diagnosis'].dropna().unique())
