@@ -26,7 +26,8 @@ plt.rcParams.update({
     'axes.spines.right': False,
     'axes.spines.top': False
 })
-plt.switch_backend('TkAgg') # to use interactive plotting, o.w. uses inline 
+# Batch processing saves plots to disk; a GUI backend is not needed.
+plt.switch_backend('Agg')
 pd.options.display.float_format = '{:,.4g}'.format
 
 load_dotenv()  # Load environment variables from a .env file

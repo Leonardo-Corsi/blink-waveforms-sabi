@@ -1,0 +1,7 @@
+;Group;Condition;P < 0.05 uncorr (nsig/ntot);P < 0.05 fdr-bh-within-group (nsig/ntot);Median_P_uncorrected;Rbar (mean +/- std);t_pref (s, mean +/- std);Fisher_X2_uncorrected;Fisher_p_uncorrected;Fisher_significant_uncorrected;Fisher_X2_fdr_bh_within_group;Fisher_p_fdr_bh_within_group;Fisher_significant_fdr_bh_within_group;Binom_tail_p_uncorrected;Binom_significant_uncorrected;Binom_tail_p_fdr_bh_within_group;Binom_significant_fdr_bh_within_group
+0;HC;ODDBALL;12/21;9/21;0.0371436;0.195 +/- 0.083;0.500 +/- 0.095;267.843;1.14568e-34;True;205.776;1.8626e-23;True;4.69256e-11;True;3.30881e-07;True
+1;HC;RESTING;0/21;0/21;0.587149;0.078 +/- 0.047;-0.280 +/- 0.338;37.4452;0.670997;False;21.4114;0.996534;False;1;False;1;False
+2;eMCS;ODDBALL;2/11;1/11;0.445256;0.108 +/- 0.078;-0.454 +/- 0.207;50.0224;0.000582383;True;29.6852;0.126318;False;0.101895;False;0.4312;False
+3;eMCS;RESTING;0/11;0/11;0.285081;0.098 +/- 0.054;0.427 +/- 0.177;25.4991;0.273808;False;9.43994;0.990711;False;1;False;1;False
+4;pDoC;ODDBALL;1/8;0/8;0.56976;0.092 +/- 0.058;-0.180 +/- 0.272;17.1916;0.373305;False;3.32542;0.999665;False;0.33658;False;1;False
+5;pDoC;RESTING;0/8;0/8;0.709578;0.062 +/- 0.019;0.039 +/- 0.136;6.51109;0.981575;False;1.87498;0.999994;False;1;False;1;False

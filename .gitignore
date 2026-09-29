@@ -13,5 +13,9 @@ env/
 *.local
 dist/
 build/
-results/**
-!results/*.*
+# ignore EOG intermediates not needed for this branch
+results*/eog/*_processing_steps.csv
+results*/eog/*_features.csv
+results*/eog/*_waveforms.csv
+results*/eog/*_similarity.csv
+results*/eog/*_waveforms.png

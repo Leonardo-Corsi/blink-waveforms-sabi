@@ -25,7 +25,8 @@ plt.rcParams.update({
     'axes.spines.right': False,
     'axes.spines.top': False
 })
-plt.switch_backend('TkAgg') # to use interactive plotting, o.w. uses inline 
+# Worker processes save figures to disk and must not require Tcl/Tk.
+plt.switch_backend('Agg')
 
 
 # Context manager for nan warnings, they are annoying
