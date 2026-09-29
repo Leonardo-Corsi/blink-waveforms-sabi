@@ -13,6 +13,16 @@ This repository contains the full analysis pipeline for the submission of:
 
 The code implements an automated extraction and characterization of blink-related EOG waveforms from recordings in edf format, followed by statistical comparison across clinical groups and task conditions and demographical correction.
 
+## Related analysis branch
+
+The analysis for the manuscript:
+
+> **Strength and Timing Failure Modes in Auditory Stimulus-Locked Blink Synchronization Across Levels of Consciousness**
+>
+> Leonardo Corsi, Alfonso Magliacano, Piergiuseppe Liuzzi, Calogero Maria Oddo, Anna Estraneo, Andrea Mannini
+
+is maintained separately in the [`blink-probability-modulation-sabi`](https://github.com/leonardocorsi/blink-waveforms-sabi/tree/blink-probability-modulation-sabi) branch.
+
 
 ## Overview
 
